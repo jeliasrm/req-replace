@@ -1,0 +1,13 @@
+{
+  "name": "req-replace",
+  "version": "1.0.0",
+  "description": "Network proxy service with request body replacement support",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": ["proxy", "request", "replace", "stream"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {}
+}
