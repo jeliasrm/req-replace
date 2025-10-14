@@ -1,3 +1,7 @@
 {
-  "Create one with `update_todo_list` if your task is complicated or involves multiple steps.": "Create one with `update_todo_list`, if your task is complicated or involves multiple steps."
+  "Create one with `update_todo_list` if your task is complicated or involves multiple steps.": 
+  "Create one with `update_todo_list`  if your task is complicated or involves multiple steps.",
+  "Always use the actual tool name as the XML tag name for proper parsing and execution.":
+  "Always use the  actual tool name  as the  XML tag name  for proper parsing and execution."
+
 }
